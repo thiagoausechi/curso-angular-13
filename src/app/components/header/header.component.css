@@ -8,11 +8,17 @@ header {
   background-color: rgba(0, 0, 0, 0.5);
 
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  padding: 10px;
 
   -webkit-backdrop-filter: blur(16px);
 }
 
 a {
   color: white;
+}
+
+nav {
+  display: flex;
+  gap: 10px;
 }
