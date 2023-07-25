@@ -9,7 +9,7 @@ export class UserServices {
 
   constructor() {}
 
-  set setData(value: User) {
+  setData(value: User): void {
     this.user$.next(value);
   }
 
