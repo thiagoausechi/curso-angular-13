@@ -1,7 +1,8 @@
 <header>
   <nav>
-    <a href="/">{{ links[0].display }}</a>
-    <a href="/">{{ links[1].display }}</a>
+    <div *ngFor="let link of links">
+      <a [href]="link.link">{{ link.display }}</a>
+    </div>
   </nav>
   <h2>
     <a
