@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { RefreshButtonComponent } from './components/refresh-button/refresh-button.component';
 import { UserComponent } from './components/user/user.component';
 import { UserService } from './services/user.service';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UserService } from './services/user.service';
     HeaderComponent,
     UserComponent,
     RefreshButtonComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
