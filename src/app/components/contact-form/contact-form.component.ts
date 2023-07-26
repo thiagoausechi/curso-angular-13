@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -10,7 +11,11 @@ export class ContactFormComponent implements OnInit {
   email: string = '';
   content: string = '';
 
-  constructor() {}
+  constructor(private userService: UserService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService.getData.subscribe(
+      (data) => (this.name = data?.name || '')
+    );
+  }
 }
