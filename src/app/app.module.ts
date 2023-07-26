@@ -10,6 +10,7 @@ import { RefreshButtonComponent } from './components/refresh-button/refresh-butt
 import { UserComponent } from './components/user/user.component';
 import { UserService } from './services/user.service';
 import { AboutComponent } from './pages/about/about.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AboutComponent } from './pages/about/about.component';
     UserComponent,
     RefreshButtonComponent,
     ContactFormComponent,
-    AboutComponent
+    AboutComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
