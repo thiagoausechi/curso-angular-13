@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { UserComponent } from './components/user/user.component';
 import { RefreshButtonComponent } from './components/refresh-button/refresh-button.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [UserServices],
   bootstrap: [AppComponent]
