@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
+  --background-color: #242424;
   --accent: #d90437;
 }
 
@@ -9,6 +10,8 @@
 
 body {
   margin: 0;
+
+  background: var(--background-color);
 }
 
 /* BUTTON RESET */
