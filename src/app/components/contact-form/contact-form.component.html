@@ -1,1 +1,17 @@
-<p>contact-form works!</p>
+<h2>Get in touch:</h2>
+<form>
+  <input type="text" [(ngModel)]="name" name="name" placeholder="John Doe" />
+  <input
+    type="email"
+    [(ngModel)]="email"
+    name="email"
+    placeholder="john@doe.com"
+  />
+  <input
+    type="text"
+    [(ngModel)]="content"
+    name="content"
+    placeholder="Your message..."
+  />
+  <button type="submit">Submit</button>
+</form>
