@@ -19,15 +19,15 @@ export class UserService {
   private apiUrl = 'https://jsonplaceholder.typicode.com/users/';
   private user$ = new BehaviorSubject<User>(null);
 
-  private loading = false;
+  private loading = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {}
 
   async fetchUser() {
-    this.loading = true;
+    this.loading.next(true);
     console.log('Fetching user');
 
-    const randomID = Math.floor(Math.random() * 11);
+    const randomID = Math.floor(Math.random() * 11) + 1;
 
     console.log('Fetching ID: ', randomID);
 
@@ -42,7 +42,7 @@ export class UserService {
       else this.setData(null);
 
       console.log('Fetch ended.');
-      this.loading = false;
+      this.loading.next(false);
     });
   }
 
@@ -54,7 +54,7 @@ export class UserService {
     return this.user$.asObservable();
   }
 
-  get isLoading(): boolean {
-    return this.isLoading;
+  get isLoading(): Observable<boolean> {
+    return this.loading.asObservable();
   }
 }

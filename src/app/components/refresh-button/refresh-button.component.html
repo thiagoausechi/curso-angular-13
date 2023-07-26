@@ -1,1 +1,6 @@
-<button (click)="refresh()">Refresh</button>
+<button (click)="refresh()" *ngIf="!isLoading">
+  <div *ngIf="hasUser">Refresh User</div>
+  <div *ngIf="!hasUser">Fetch User</div>
+</button>
+
+<button *ngIf="isLoading">Loading !</button>

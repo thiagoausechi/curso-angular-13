@@ -7,12 +7,19 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./refresh-button.component.css'],
 })
 export class RefreshButtonComponent implements OnInit {
+  isLoading = false;
+  hasUser = false;
+
   constructor(private userService: UserService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService.getData.subscribe((data) => (this.hasUser = !!data));
+    this.userService.isLoading.subscribe(
+      (loading) => (this.isLoading = loading)
+    );
+  }
 
   refresh(): void {
-    console.log('Irá fazer outra requisição de Usuário');
     this.userService.fetchUser();
   }
 }
