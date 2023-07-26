@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { UserComponent } from './components/user/user.component';
 import { RefreshButtonComponent } from './components/refresh-button/refresh-button.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     UserComponent,
-    RefreshButtonComponent
+    RefreshButtonComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
