@@ -1,10 +1,19 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Route, RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
 
-const routes: Routes = [];
+interface NamedRoute extends Route {
+  name: string;
+  hide?: boolean;
+}
+
+export const routes: NamedRoute[] = [
+  { path: '',      name: 'Home',  component: AppComponent },
+  { path: 'about', name: 'About', component: AppComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-type Link = {
-  display: string;
-  link: string;
-};
+import { routes as rootRoutes } from 'src/app/app-routing.module';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +7,7 @@ type Link = {
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  links: Link[] = [
-    { display: 'Home', link: '/' },
-    { display: 'About', link: '/about' },
-  ];
+  routes = rootRoutes;
 
   constructor() {}
 

@@ -1,7 +1,7 @@
 <header>
   <nav>
-    <div *ngFor="let link of links">
-      <a [href]="link.link">{{ link.display }}</a>
+    <div *ngFor="let route of routes">
+      <a [href]="route.path" *ngIf="!route.hide">{{ route.name }}</a>
     </div>
   </nav>
   <h2>
