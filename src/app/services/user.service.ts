@@ -1,19 +1,60 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+import { HttpClient } from '@angular/common/http';
+
+type Response = {
+  id: string;
+  name: string;
+  username: string;
+  email: string;
+};
+
+type EmptyObj = {};
+
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
+  private apiUrl = 'https://jsonplaceholder.typicode.com/users/';
   private user$ = new BehaviorSubject<User>(null);
 
-  constructor() {}
+  private loading = false;
 
-  setData(value: User): void {
+  constructor(private http: HttpClient) {}
+
+  async fetchUser() {
+    this.loading = true;
+    console.log('Fetching user');
+
+    const randomID = Math.floor(Math.random() * 11);
+
+    console.log('Fetching ID: ', randomID);
+
+    const response = await this.http.get<Response | EmptyObj>(
+      this.apiUrl + randomID
+    );
+
+    response.subscribe((data) => {
+      console.log('Fetched data: ', data);
+
+      if ('id' in data) this.setData(data as Response);
+      else this.setData(null);
+
+      console.log('Fetch ended.');
+      this.loading = false;
+    });
+  }
+
+  private setData(value: User): void {
     this.user$.next(value);
   }
 
   get getData(): Observable<User> {
     return this.user$.asObservable();
+  }
+
+  get isLoading(): boolean {
+    return this.isLoading;
   }
 }

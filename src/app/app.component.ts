@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +8,7 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit {
   title = 'curso-angular-13';
 
-  logged_user: User = {
-    name: 'Thiago',
-  };
+  constructor() {}
 
-  constructor(private userService: UserService) {}
-
-  ngOnInit(): void {
-    this.userService.setData(this.logged_user);
-  }
+  ngOnInit(): void {}
 }
