@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserServices } from 'src/user-services';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
     name: 'Thiago',
   };
 
-  constructor(private userService: UserServices) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.userService.setData(this.logged_user);
