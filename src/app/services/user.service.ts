@@ -54,6 +54,10 @@ export class UserService {
     return this.user$.asObservable();
   }
 
+  getUserByID(id: string): Observable<User | EmptyObj> {
+    return this.http.get<User | EmptyObj>(this.apiUrl + id);
+  }
+
   get isLoading(): Observable<boolean> {
     return this.loading.asObservable();
   }
