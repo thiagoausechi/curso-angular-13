@@ -34,7 +34,7 @@ tbody:before {
   line-height: 8px;
   content: "\200C";
   display: block;
-  background-color: var(--background);
+  background-color: var(--background-color);
 }
 
 tbody tr {
