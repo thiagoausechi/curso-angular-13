@@ -15,10 +15,6 @@ header {
   -webkit-backdrop-filter: blur(16px);
 }
 
-a {
-  color: white;
-}
-
 nav {
   display: flex;
   gap: 10px;
