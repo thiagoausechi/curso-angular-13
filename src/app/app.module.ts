@@ -13,6 +13,7 @@ import { UserService } from './services/user.service';
 import { AboutComponent } from './pages/about/about.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
+import { TodoComponent } from './components/todo/todo.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { UserPageComponent } from './pages/user-page/user-page.component';
     ContactFormComponent,
     AboutComponent,
     HomeComponent,
-    UserPageComponent
+    UserPageComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,

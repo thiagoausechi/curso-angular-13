@@ -2,6 +2,15 @@
 :root {
   --background-color: #242424;
   --accent: #d90437;
+
+  --table-round: 8px;
+
+  --table-head-text: #f4f4f5;
+  --table-head-backround: #27272a;
+
+  --table-cell-text: #d4d4d8;
+  --table-row-backround: #27272a;
+  --table-row-backround-hover: #323236;
 }
 
 * {
