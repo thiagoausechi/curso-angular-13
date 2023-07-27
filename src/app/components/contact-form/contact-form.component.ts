@@ -14,8 +14,11 @@ export class ContactFormComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.getData.subscribe(
-      (data) => (this.name = data?.name || '')
-    );
+    this.userService.getData.subscribe((data) => {
+      if (!data) return;
+
+      this.name = data.name || '';
+      this.email = data.email || '';
+    });
   }
 }
