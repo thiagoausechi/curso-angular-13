@@ -2,9 +2,15 @@
   flex-grow: 1;
 }
 
+section {
+  /* Disable the "full page" settings from Global style */
+  min-height: fit-content;
+  max-width: max-content;
+  margin-inline: auto;
+}
+
 table {
   width: clamp(100px, 100%, 500px);
-  padding-inline: 20px;
 
   margin-top: 22px;
 }
@@ -49,4 +55,20 @@ th,
 td {
   padding: 8px;
   padding-block: 10px;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+
+  width: 100%;
+}
+
+input {
+  width: inherit;
+}
+
+.done {
+  text-decoration: line-through;
 }

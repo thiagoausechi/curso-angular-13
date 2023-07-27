@@ -1,17 +1,25 @@
-<h1>Your list:</h1>
-<table>
-  <thead>
-    <tr>
-      <th>[ ]</th>
-      <th>Task</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody id="list">
-    <tr>
-      <td>[ ]</td>
-      <td>Test</td>
-      <td>Del</td>
-    </tr>
-  </tbody>
-</table>
+<section>
+  <h1>Your list:</h1>
+  <form>
+    <input type="text" placeholder="New task" />
+    <button type="submit">Add task</button>
+  </form>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Task</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="list">
+      <tr *ngFor="let task of tasks">
+        <td>
+          <input type="checkbox" [checked]="task.done" />
+        </td>
+        <td>{{ task.name }}</td>
+        <td>Del</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
