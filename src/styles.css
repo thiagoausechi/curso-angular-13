@@ -1,27 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --text: white;
-  --detail-text: gray;
+  --text: #f4f4f5; /* zinc-100 */
+  --detail-text: #a1a1aa; /* zinc-400 */
   --link: var(--text);
-  --background-color: #18181b;
+  --background-color: #18181b; /* zinc-900 */
   --accent: #d90437;
+  --accent-hover: #fb2d5d;
 
-  --btn-background: #3f3f46;
-  --btn-background-hover: #71717a;
+  --btn-background: #3f3f46; /* zinc-700 */
+  --btn-background-hover: #71717a; /* zinc-500 */
 
-  --input-background: #18181b;
-  --input-background-hover: #27272a;
-  --input-background-border: #3f3f46;
-  --input-background-border-hover: #52525b;
-  --input-background-border-active: white;
+  --input-background: #18181b; /* zinc-900 */
+  --input-background-hover: #27272a; /* zinc-800 */
+  --input-background-border: #3f3f46; /* zinc-700 */
+  --input-background-border-hover: #52525b; /* zinc-600 */
+  --input-background-border-active: #f4f4f5; /* zinc-100 */
 
   --table-round: 8px;
 
-  --table-head-text: #f4f4f5;
-  --table-head-backround: #27272a;
+  --table-head-text: var(--text);
+  --table-head-backround: #27272a; /* zinc-800 */
 
-  --table-cell-text: #d4d4d8;
-  --table-row-backround: #27272a;
+  --table-cell-text: #d4d4d8; /* zinc-300 */
+  --table-row-backround: #27272a; /* zinc-800 */
   --table-row-backround-hover: #323236;
 }
 
@@ -125,6 +126,45 @@ input:focus-visible {
 input:hover {
   background-color: var(--input-background-hover);
   border-color: var(--input-background-border-ver);
+}
+
+/* CHECKBOX INPUT STYLE */
+
+input[type="checkbox"] {
+  appearance: none; /* disabled browser default styles */
+  position: relative;
+  height: 12px;
+  width: 12px;
+  background-color: var(--btn-background);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:hover {
+  background-color: var(--btn-background-hover);
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--accent);
+}
+
+input[type="checkbox"]:checked:hover {
+  background-color: var(--accent-hover);
+}
+
+input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 8px;
+  top: 5px;
+  width: 0.3rem;
+  height: 0.6rem;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transition: all 0.2s;
+  transform: rotate(45deg);
 }
 
 /* BUTTON STYLE */
