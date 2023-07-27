@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
+import { HomeComponent } from './pages/home/home.component';
+import { UserPageComponent } from './pages/user-page/user-page.component';
 
-interface NamedRoute extends Route {
-  name: string;
-  hide?: boolean;
-}
+// Won't require name if `hide = true`
+type NamedRoute =
+  | ({
+      name: string;
+      hide?: false;
+    } & Route)
+  | ({
+      hide: true;
+    } & Route);
 
 export const routes: NamedRoute[] = [
-  { path: '',      name: 'Home',  component: HomeComponent  },
-  { path: 'about', name: 'About', component: AboutComponent },
+  { path: '',         name: 'Home',  component: HomeComponent     },
+  { path: 'about',    name: 'About', component: AboutComponent    },
+  { path: 'user/:id', hide:  true,   component: UserPageComponent },
 ];
 
 @NgModule({
