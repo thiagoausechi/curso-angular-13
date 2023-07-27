@@ -1,4 +1,6 @@
 <p *ngIf="!user; else userName">Log in</p>
 <ng-template #userName>
-  <p>Logged as {{ user?.name }}</p>
+  <p>
+    Logged as <a routerLink="/user/{{ user!.id }}">{{ user!.name }}</a>
+  </p>
 </ng-template>
