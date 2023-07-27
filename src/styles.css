@@ -1,7 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
+  --text: white;
+  --detail-text: gray;
+  --link: var(--text);
   --background-color: #18181b;
   --accent: #d90437;
+
+  --btn-background: #3f3f46;
+  --btn-background-hover: #71717a;
+
+  --input-background: #18181b;
+  --input-background-hover: #27272a;
+  --input-background-border: #3f3f46;
+  --input-background-border-hover: #52525b;
+  --input-background-border-active: white;
 
   --table-round: 8px;
 
@@ -23,7 +35,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 14px;
-  color: white;
+  color: var(--text);
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -71,7 +83,7 @@ h6 {
 }
 
 a {
-  color: white;
+  color: var(--link);
 }
 
 section {
@@ -91,24 +103,46 @@ span {
   color: var(--accent);
 }
 
+/* BASE INPUT STYLE */
+
 input {
-  background-color: #18181b;
-  color: white;
+  background-color: var(--input-background);
+  color: var(--text);
 
   padding: 12px;
   border-radius: 4px;
 
   transition: all 0.2s;
 
-  border: solid #3f3f46 1px;
+  border: solid var(--input-background-border) 1px;
 }
 
 input:focus-visible {
   outline: none;
-  border-color: white !important;
+  border-color: var(--input-background-border-active) !important;
 }
 
 input:hover {
-  background-color: #27272a;
-  border-color: #52525b;
+  background-color: var(--input-background-hover);
+  border-color: var(--input-background-border-ver);
+}
+
+/* BUTTON STYLE */
+
+button {
+  min-width: fit-content;
+
+  background-color: var(--btn-background);
+  border-radius: 4px;
+  align-self: center;
+
+  padding: 5px;
+  padding-inline: 8px;
+
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--btn-background-hover);
 }
