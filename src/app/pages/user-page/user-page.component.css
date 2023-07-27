@@ -1,0 +1,19 @@
+main {
+  padding: 20px;
+}
+
+h1 {
+  font-size: xxx-large;
+  margin-block: 0px;
+}
+
+p {
+  font-size: larger;
+  margin-block: 0px;
+}
+
+.detail {
+  margin-top: 16px;
+  color: gray;
+  text-align: center;
+}

@@ -1,3 +1,11 @@
 <section>
-  <p>User page</p>
+  <main *ngIf="user; else notFound">
+    <p>Welcome back,</p>
+    <h1>{{ user.name }}</h1>
+    <p class="detail">{{ user.email }}</p>
+  </main>
+
+  <ng-template #notFound>
+    <p>User <span>Not</span> Found</p>
+  </ng-template>
 </section>
