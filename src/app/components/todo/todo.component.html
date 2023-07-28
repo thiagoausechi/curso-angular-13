@@ -27,7 +27,7 @@
       <tr *ngFor="let task of tasks | keyvalue">
         <td>
           <input
-            type="checkbox"
+            type="checkbox" required
             (click)="toggleDone(task.key)"
             [checked]="task.value.done"
           />
