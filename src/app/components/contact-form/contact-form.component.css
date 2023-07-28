@@ -7,3 +7,25 @@ form {
   width: 66vw;
   max-width: 500px;
 }
+
+.validation-error {
+  color: var(--accent);
+}
+
+.validation-error:before {
+  content: "*";
+  margin-right: 4px;
+}
+
+.success {
+  color: #4ade80; /* green-400 */
+  background-color: #166534; /* green-800 */
+}
+
+.success span {
+  color: #4ade80; /* green-400 */
+}
+
+.success:hover {
+  background-color: #15803d; /* green-700 */
+}

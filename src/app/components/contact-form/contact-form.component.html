@@ -1,17 +1,38 @@
 <h2>Get in touch:</h2>
-<form>
-  <input type="text" [(ngModel)]="name" name="name" placeholder="John Doe" />
+<form (ngSubmit)="submit()" [formGroup]="contactForm" #formDir="ngForm">
+  <input type="text" formControlName="name" placeholder="John Doe" required />
+  <div *ngIf="name?.invalid && formDir.submitted" class="validation-error">
+    O nome é obrigatório!
+  </div>
   <input
     type="email"
-    [(ngModel)]="email"
-    name="email"
+    formControlName="email"
     placeholder="john@doe.com"
+    required
   />
+  <div
+    *ngIf="email?.errors?.['required'] && formDir.submitted"
+    class="validation-error"
+  >
+    O email é obrigatório!
+  </div>
+  <div
+    *ngIf="email?.errors?.['email'] && formDir.submitted"
+    class="validation-error"
+  >
+    Não é um e-mail válido!
+  </div>
   <input
     type="text"
-    [(ngModel)]="content"
-    name="content"
+    formControlName="content"
     placeholder="Your message..."
+    required
   />
-  <button type="submit">Submit</button>
+  <div *ngIf="content?.invalid && formDir.submitted" class="validation-error">
+    A mensagem é obrigatório!
+  </div>
+  <button type="submit" [class.success]="submitted">
+    Submit
+    <span *ngIf="submitted">&#10003;</span>
+  </button>
 </form>

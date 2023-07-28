@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -7,18 +8,32 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./contact-form.component.css'],
 })
 export class ContactFormComponent implements OnInit {
-  name: string = '';
-  email: string = '';
-  content: string = '';
+  contactForm!: FormGroup;
+  submitted: boolean = false;
 
-  constructor(private userService: UserService) {}
-
-  ngOnInit(): void {
+  constructor(private userService: UserService) {
     this.userService.getData.subscribe((data) => {
       if (!data) return;
 
-      this.name = data.name || '';
-      this.email = data.email || '';
+      // this.name = data.name || '';
+      // this.email = data.email || '';
     });
   }
+
+  ngOnInit(): void {
+    this.contactForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      content: new FormControl('', Validators.required),
+    });
+  }
+
+  submit() {
+    // Just visually sinalize that everything is corret
+    if (!this.contactForm.invalid) this.submitted = true;
+  }
+
+  get name() { return this.contactForm.get('name') } // prettier-ignore
+  get email() { return this.contactForm.get('email') } // prettier-ignore
+  get content() { return this.contactForm.get('content') } // prettier-ignore
 }
