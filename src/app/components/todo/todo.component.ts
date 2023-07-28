@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CrudService } from 'src/app/services/crud.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 type Task = {
@@ -15,28 +16,31 @@ type Task = {
 export class TodoComponent implements OnInit {
   newTask: string = '';
 
-  tasks = new Map<string, Task>();
-
-  constructor(private localStorageService: LocalStorageService) {}
+  constructor(
+    private crudService: CrudService<Task>,
+    private localStorageService: LocalStorageService
+  ) {}
 
   ngOnInit(): void {
     const cachedTasks = this.localStorageService.get('tasks');
 
     // Basic verification, not ideal
     if (cachedTasks || Array.isArray(cachedTasks))
-      this.tasks = new Map(cachedTasks);
+      this.crudService.setStorage(new Map(cachedTasks));
+  }
+
+  get tasks() {
+    return this.crudService.getStorage();
   }
 
   addNewTask(): void {
     if (!this.newTask) return;
 
-    const id = crypto.randomUUID();
-
-    this.tasks.set(id, {
-      id: id,
+    this.crudService.create((id) => ({
+      id,
       name: this.newTask,
       done: false,
-    });
+    }));
 
     this.newTask = '';
     this.store();
@@ -46,7 +50,7 @@ export class TodoComponent implements OnInit {
     const task = this.getTaskByID(id);
     if (!task) return;
 
-    this.tasks.set(id, {
+    this.crudService.update(id, {
       ...task,
       done: !task.done,
     });
@@ -55,20 +59,23 @@ export class TodoComponent implements OnInit {
   }
 
   deleteTask(id: string) {
-    this.tasks.delete(id);
+    this.crudService.delete(id);
     this.store();
   }
 
   private getTaskByID(id: string): Task | null {
     if (!id) return null;
 
-    const task = this.tasks.get(id);
+    const task = this.crudService.read(id);
     if (!task) return null;
 
     return task;
   }
 
   private store() {
-    this.localStorageService.set('tasks', Array.from(this.tasks));
+    this.localStorageService.set(
+      'tasks',
+      Array.from(this.crudService.getStorage())
+    );
   }
 }
