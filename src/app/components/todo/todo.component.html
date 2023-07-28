@@ -1,13 +1,13 @@
 <section>
   <h1>Your list:</h1>
-  <form>
+  <form (ngSubmit)="addNewTask()">
     <input
       type="text"
       [(ngModel)]="newTask"
       name="newTask"
       placeholder="New task"
     />
-    <button (click)="addNewTask()">Add task</button>
+    <button type="submit">Add task</button>
   </form>
   <table>
     <colgroup>
@@ -27,7 +27,8 @@
       <tr *ngFor="let task of tasks | keyvalue">
         <td>
           <input
-            type="checkbox" required
+            type="checkbox"
+            required
             (click)="toggleDone(task.key)"
             [checked]="task.value.done"
           />
