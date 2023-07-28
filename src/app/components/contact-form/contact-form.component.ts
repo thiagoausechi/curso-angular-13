@@ -15,8 +15,8 @@ export class ContactFormComponent implements OnInit {
     this.userService.getData.subscribe((data) => {
       if (!data) return;
 
-      // this.name = data.name || '';
-      // this.email = data.email || '';
+      this.contactForm.controls['name'].setValue(data.name);
+      this.contactForm.controls['email'].setValue(data.email);
     });
   }
 
