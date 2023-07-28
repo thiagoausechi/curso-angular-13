@@ -1,10 +1,21 @@
 <section>
   <h1>Your list:</h1>
   <form>
-    <input type="text" placeholder="New task" />
-    <button type="submit">Add task</button>
+    <input
+      type="text"
+      [(ngModel)]="newTask"
+      name="newTask"
+      placeholder="New task"
+    />
+    <button (click)="addNewTask()">Add task</button>
   </form>
   <table>
+    <colgroup>
+      <col span="1" style="width: fit-content; min-width: 47px" />
+      <col span="1" style="width: 100%" />
+      <col span="1" style="width: fit-content; min-width: 84px" />
+    </colgroup>
+
     <thead>
       <tr>
         <th></th>
@@ -13,12 +24,18 @@
       </tr>
     </thead>
     <tbody id="list">
-      <tr *ngFor="let task of tasks">
+      <tr *ngFor="let task of tasks | keyvalue">
         <td>
-          <input type="checkbox" [checked]="task.done" />
+          <input
+            type="checkbox"
+            (click)="toggleDone(task.key)"
+            [checked]="task.value.done"
+          />
         </td>
-        <td>{{ task.name }}</td>
-        <td>Del</td>
+        <td>{{ task.value.name }}</td>
+        <td>
+          <button (click)="deleteTask(task.key)">Remove</button>
+        </td>
       </tr>
     </tbody>
   </table>
