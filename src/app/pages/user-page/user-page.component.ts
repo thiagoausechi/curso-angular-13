@@ -10,15 +10,12 @@ import { UserService } from 'src/app/services/user.service';
 export class UserPageComponent implements OnInit {
   user: User = null;
 
-  constructor(
-    private userService: UserService,
-    private route: ActivatedRoute
-  ) {}
-
-  ngOnInit(): void {
+  constructor(private userService: UserService, private route: ActivatedRoute) {
     const userID = this.route.snapshot.paramMap.get('id') || '0';
     this.userService
       .getUserByID(userID)
       .subscribe((data) => (data && 'id' in data ? (this.user = data) : null));
   }
+
+  ngOnInit(): void {}
 }

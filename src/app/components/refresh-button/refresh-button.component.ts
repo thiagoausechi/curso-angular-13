@@ -10,14 +10,14 @@ export class RefreshButtonComponent implements OnInit {
   isLoading = false;
   hasUser = false;
 
-  constructor(private userService: UserService) {}
-
-  ngOnInit(): void {
+  constructor(private userService: UserService) {
     this.userService.getData.subscribe((data) => (this.hasUser = !!data));
     this.userService.isLoading.subscribe(
       (loading) => (this.isLoading = loading)
     );
   }
+
+  ngOnInit(): void {}
 
   refresh(): void {
     this.userService.fetchUser();

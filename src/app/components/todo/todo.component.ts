@@ -19,15 +19,15 @@ export class TodoComponent implements OnInit {
   constructor(
     private crudService: CrudService<Task>,
     private localStorageService: LocalStorageService
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     const cachedTasks = this.localStorageService.get('tasks');
 
     // Basic verification, not ideal
     if (cachedTasks || Array.isArray(cachedTasks))
       this.crudService.setStorage(new Map(cachedTasks));
   }
+
+  ngOnInit(): void {}
 
   get tasks() {
     return this.crudService.getStorage();
