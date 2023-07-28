@@ -1,7 +1,7 @@
 <header>
   <nav>
     <div *ngFor="let route of routes">
-      <a [routerLink]="route.path" *ngIf="!route.hide">{{ route.name }}</a>
+      <a [routerLink]="route.path"> - {{ route.path }}</a>
     </div>
   </nav>
   <h2>
