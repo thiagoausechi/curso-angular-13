@@ -18,9 +18,9 @@ export class LocalStorageService {
     return false;
   }
 
-  get(key: string): any {
+  get(key: string): unknown | null {
     if (this.storage) {
-      return JSON.parse(this.storage.getItem(key) || '');
+      return JSON.parse(this.storage.getItem(key) ?? 'null');
     }
     return null;
   }

@@ -22,9 +22,9 @@ export class TodoComponent implements OnInit {
   ) {
     const cachedTasks = this.localStorageService.get('tasks');
 
-    // Basic verification, not ideal
+    // Basic verification, not ideal (indeed)
     if (cachedTasks || Array.isArray(cachedTasks))
-      this.crudService.setStorage(new Map(cachedTasks));
+      this.crudService.setStorage(new Map(cachedTasks as any[]));
   }
 
   ngOnInit(): void {}
