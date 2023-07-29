@@ -14,10 +14,10 @@ type NamedRoute =
       hide: true;
     } & Route);
 
-export const routes: Routes = [
-  { path: '',         component: HomeComponent     },
-  { path: 'about',    component: AboutComponent    },
-  { path: 'user/:id', component: UserPageComponent },
+export const routes: NamedRoute[] = [
+  { path: '',         name: 'Home',  component: HomeComponent     },
+  { path: 'about',    name: 'About', component: AboutComponent    },
+  { path: 'user/:id', hide:  true,   component: UserPageComponent },
 ];
 
 @NgModule({
